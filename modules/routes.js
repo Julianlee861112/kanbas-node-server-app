@@ -50,7 +50,7 @@ function ModuleRoutes(app) {
       course: cid,
       _id: new Date().getTime().toString(),
     };
-    db.modules.push(newModule);
+    Database.modules.push(newModule);
     res.send(newModule);
   });
 
@@ -69,10 +69,10 @@ function ModuleRoutes(app) {
   // });
   app.put("/api/modules/:mid", (req, res) => {
     const { mid } = req.params;
-    const moduleIndex = db.modules.findIndex(
+    const moduleIndex = Database.modules.findIndex(
       (m) => m._id === mid);
-    db.modules[moduleIndex] = {
-      ...db.modules[moduleIndex],
+    Database.modules[moduleIndex] = {
+      ...Database.modules[moduleIndex],
       ...req.body
     };
     res.sendStatus(204);
